@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AssessmentDetailResource\Pages;
 
 use App\Filament\Resources\AssessmentDetailResource;
+use App\Models\AssessmentDetail;
 use App\Models\TreeAssessment;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
@@ -17,6 +18,7 @@ class ViewAssessmentDetail extends ViewRecord
     protected static ?string $title = 'Detail Penilaian';
 
     public $customData;
+    public $tapperCreds;
 
     public function mount($record): void
     {
@@ -29,6 +31,11 @@ class ViewAssessmentDetail extends ViewRecord
             ->groupBy('criteria.name')
             ->orderBy('criteria.id')
             ->get();
+
+        $this->tapperCreds = AssessmentDetail::where('assessment_code', $this->record->assessment_code)
+            ->join('tappers', 'assessment_details.nik_penyadap', '=', 'tappers.nik')
+            ->select('tappers.name as tapper_name', 'tappers.nik as tapper_nik', 'tappers.departemen as departemen', 'assessment_details.inspection_by as inspection_by', 'assessment_details.tanggal_inspeksi as tanggal_inspeksi', 'assessment_details.panel_sadap')
+            ->first();
     }
 
     // public static function table(Table $table): Table

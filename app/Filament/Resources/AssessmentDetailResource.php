@@ -4,18 +4,22 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Tapper;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\AssessmentDetail;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AssessmentDetailResource\Pages;
+use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 use App\Filament\Resources\AssessmentDetailResource\RelationManagers;
-use App\Models\Tapper;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Model;
+
+
 
 class AssessmentDetailResource extends Resource
 {
@@ -77,8 +81,6 @@ class AssessmentDetailResource extends Resource
                 TextColumn::make('keterangan')
                     ->label('Keterangan')
 
-
-
             ])->striped(true)
             ->filters([
                 SelectFilter::make('tapper_departemen')
@@ -93,7 +95,20 @@ class AssessmentDetailResource extends Resource
                             $q->where('departemen', $value);
                         });
                     }),
-
+                SelectFilter::make('kemandoran')
+                    ->options(
+                        AssessmentDetail::pluck('kemandoran', 'kemandoran')
+                            ->unique()
+                    )
+                    ->label('Kemandoran'),
+                DateRangeFilter::make('tanggal_inspeksi')
+                    ->label('Tanggal Inspeksi')
+                    ->ranges([
+                        'Today' => [now()->startOfDay(), now()->endOfDay()],
+                        'This Week' => [now()->startOfWeek(), now()->endOfWeek()],
+                        'This Month' => [now()->startOfMonth(), now()->endOfMonth()],
+                    ])
+                    ->placeholder('Pilih Tanggal'),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
