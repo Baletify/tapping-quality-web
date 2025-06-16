@@ -9,3 +9,4 @@ Route::get('/', function () {
 });
 
 Route::post('/assessment-upload', [AssessmentController::class, 'store'])->name('api.assessment-details.create');
+Route::post('/tree-assessment-upload', [AssessmentController::class, 'storeTree'])->name('api.assessment-details.store-tree');

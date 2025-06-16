@@ -15,6 +15,22 @@ class AssessmentDetail extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
+    protected $fillable = [
+        'assessment_code',
+        'nik_penyadap',
+        'blok',
+        'task',
+        'kemandoran',
+        'no_hancak',
+        'tahun_tanam',
+        'clone',
+        'sistem_sadap',
+        'panel_sadap',
+        'jenis_kulit_pohon',
+        'tanggal_inspeksi',
+        'inspection_by',
+    ];
+
     public function tapper()
     {
         return $this->belongsTo(Tapper::class, 'nik_penyadap', 'nik');
