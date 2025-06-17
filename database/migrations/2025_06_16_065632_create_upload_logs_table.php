@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('upload_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('upload_at');
+            $table->datetime('upload_at');
             $table->string('assessment_code')->nullable();
             $table->foreign('assessment_code')->references('assessment_code')->on('assessment_details')->nullOnDelete();
             $table->timestamps();

@@ -32,6 +32,11 @@ class AssessmentController extends Controller
                 'inspection_by' => $request->inspection_by,
             ]);
 
+            $createUploadedAt = UploadLog::create([
+                'upload_at' => now()->toDateTimeString(),
+                'assessment_code' => $request->assessment_code,
+            ]);
+
             return response()->json([
                 'success' => true,
                 'message' => 'Assessment detail created successfully',
@@ -53,11 +58,6 @@ class AssessmentController extends Controller
                 'assessment_code' => $request->assessment_code,
                 'tree_id' => $request->tree_id,
                 'criteria_id' => $request->criteria_id,
-            ]);
-
-            $createUploadedAt = UploadLog::create([
-                'upload_at' => now()->toDateTimeString(),
-                'assessment_code' => $request->assessment_code,
             ]);
 
             return response()->json([

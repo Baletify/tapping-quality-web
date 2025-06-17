@@ -28,7 +28,7 @@ class TapperResource extends Resource
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationGroup = 'Data Master';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function canCreate(): bool
     {

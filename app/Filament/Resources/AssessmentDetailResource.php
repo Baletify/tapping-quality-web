@@ -51,7 +51,8 @@ class AssessmentDetailResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('tanggal_inspeksi')
-                    ->date()
+                    ->date('d M Y')
+                    ->sortable()
                     ->label('Tanggal Inspeksi'),
                 TextColumn::make('inspection_by')
                     ->label('Inspeksi Oleh'),
@@ -74,12 +75,6 @@ class AssessmentDetailResource extends Resource
                     ->label('Panel Sadap'),
                 TextColumn::make('jenis_kulit_pohon')
                     ->label('Status Kulit'),
-                TextColumn::make('nilai')
-                    ->label('Nilai'),
-                TextColumn::make('kelas')
-                    ->label('Kelas'),
-                TextColumn::make('keterangan')
-                    ->label('Keterangan')
 
             ])->striped(true)
             ->filters([
