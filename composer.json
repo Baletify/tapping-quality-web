@@ -11,7 +11,9 @@
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
-        "malzariey/filament-daterangepicker-filter": "^3.4"
+        "malzariey/filament-daterangepicker-filter": "^3.4",
+        "php-flasher/flasher-laravel": "^2.1",
+        "twilio/sdk": "^8.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

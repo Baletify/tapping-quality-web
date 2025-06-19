@@ -20,17 +20,25 @@ class ViewAssessmentDetail extends ViewRecord
     public $customData;
     public $tapperCreds;
 
+    public $criteria;
+
     public function mount($record): void
     {
         parent::mount($record);
+
+        $this->criteria = DB::table('criteria')
+            ->select('criteria.*')
+            ->get();
+
         $this->customData = TreeAssessment::where('tree_assessments.assessment_code', $this->record->assessment_code)
-            ->select('criteria.name as nama_kriteria', DB::raw('AVG(criteria.score) as avg_score'))
+            ->select('criteria.id', 'criteria.score')
             ->join('assessment_details', 'tree_assessments.assessment_code', '=', 'assessment_details.assessment_code')
             ->join('tappers', 'assessment_details.nik_penyadap', '=', 'tappers.nik')
             ->join('criteria', 'tree_assessments.criteria_id', '=', 'criteria.id')
-            ->groupBy('criteria.name')
             ->orderBy('criteria.id')
             ->get();
+
+        // dd($this->customData);
 
         $this->tapperCreds = AssessmentDetail::where('assessment_code', $this->record->assessment_code)
             ->join('tappers', 'assessment_details.nik_penyadap', '=', 'tappers.nik')
