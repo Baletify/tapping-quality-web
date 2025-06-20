@@ -70,7 +70,7 @@
                         </tr>
                     @endforeach
                     <tr class="font-semibold divide-x divide-gray-200">
-                        <td class="px-4 py-2 text-center" colspan="2">Average</td>
+                        <td class="px-4 py-2 text-center" colspan="2">Total Average</td>
                         <td class="px-4 py-2 text-center">{{ number_format($totalScore, 1) }}</td>
                     </tr>
                     <tr class="font-semibold divide-x divide-gray-200">
