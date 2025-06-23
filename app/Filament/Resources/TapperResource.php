@@ -61,6 +61,9 @@ class TapperResource extends Resource
                         'Sub Divisi A' => 'Sub Divisi A',
                         'Sub Divisi B' => 'Sub Divisi B',
                         'Sub Divisi C' => 'Sub Divisi C',
+                        'Sub Divisi D' => 'Sub Divisi D',
+                        'Sub Divisi E' => 'Sub Divisi E',
+                        'Sub Divisi F' => 'Sub Divisi F',
                     ])
                     ->required()
                     ->label('Departemen'),

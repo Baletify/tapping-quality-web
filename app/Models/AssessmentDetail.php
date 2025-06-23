@@ -25,6 +25,7 @@ class AssessmentDetail extends Model
         'tahun_tanam',
         'clone',
         'sistem_sadap',
+        'jenis_sadap',
         'panel_sadap',
         'jenis_kulit_pohon',
         'tanggal_inspeksi',

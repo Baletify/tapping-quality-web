@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('sistem_sadap')->nullable();
             $table->string('panel_sadap')->nullable();
             $table->string('jenis_kulit_pohon')->nullable();
+            $table->string('jenis_sadap')->nullable();
             $table->string('inspection_by')->nullable();
             $table->dateTime('tanggal_inspeksi')->nullable();
             $table->double('nilai')->nullable();

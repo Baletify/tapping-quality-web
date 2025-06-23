@@ -26,7 +26,7 @@
                     </tr>
                 </table>
             </div>
-            <form action="{{ route('whatsapp.send-message') }}" method="POST">
+            {{-- <form action="{{ route('whatsapp.send-message') }}" method="POST">
                 @method('POST')
                 @csrf
                 <div class="p-0">
@@ -36,8 +36,7 @@
                     </x-filament::button>
                 </div>
                 <input type="hidden" name="assessment_code" id="assessment_code" value="{{ $record->assessment_code }}">
-                {{-- <input type="hidden" name="total_score" id="total_score" value="{{ $totalScore }}"> --}}
-            </form>
+            </form> --}}
         </div>
     </div>
         
@@ -58,15 +57,15 @@
                     @foreach ($criteria as $item)
                         @php
                             $i++;
-                            $actualScore = $customData->first(function ($data) use ($item) {
-                                return $data->id === $item->id;
+                            $score = $customData->first(function ($data) use ($item) {
+                                return $data->criteria_id === $item->id;
                             });
-                            $totalScore += $actualScore ? $actualScore->score / 10 : 0;
+                            $totalScore += $score ? $score->sum_score / 10 : 0;
                         @endphp
                         <tr class="divide-x divide-gray-300 {{ $i % 2 == 0 ? 'bg-gray-100' : '' }}">
                             <td class="px-4 py-2 text-center">{{ $i }}</td>
                             <td class="px-4 py-2">{{ $item->name }} - {{ $item->description }}</td>
-                            <td class="px-4 py-2 text-center">{{ $actualScore ? number_format( $actualScore->score / 10, 1) : "-"}}</td>
+                            <td class="px-4 py-2 text-center">{{ $score ? number_format( $score->sum_score / 10, 1) : "-"}}</td>
                         </tr>
                     @endforeach
                     <tr class="font-semibold divide-x divide-gray-200">

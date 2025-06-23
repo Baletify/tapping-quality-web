@@ -31,10 +31,11 @@ class ViewAssessmentDetail extends ViewRecord
             ->get();
 
         $this->customData = TreeAssessment::where('tree_assessments.assessment_code', $this->record->assessment_code)
-            ->select('criteria.id', 'criteria.score')
+            ->select('tree_assessments.criteria_id', DB::raw('SUM(criteria.score) as sum_score'))
             ->join('assessment_details', 'tree_assessments.assessment_code', '=', 'assessment_details.assessment_code')
             ->join('tappers', 'assessment_details.nik_penyadap', '=', 'tappers.nik')
             ->join('criteria', 'tree_assessments.criteria_id', '=', 'criteria.id')
+            ->groupBy('tree_assessments.criteria_id')
             ->orderBy('criteria.id')
             ->get();
 

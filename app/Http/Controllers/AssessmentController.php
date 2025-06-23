@@ -25,6 +25,7 @@ class AssessmentController extends Controller
                 'no_hancak' => $request->no_hancak,
                 'tahun_tanam' => $request->tahun_tanam,
                 'clone' => $request->clone,
+                'jenis_sadap' => $request->jenis_sadap,
                 'sistem_sadap' => $request->sistem_sadap,
                 'panel_sadap' => $request->panel_sadap,
                 'jenis_kulit_pohon' => $request->jenis_kulit_pohon,
