@@ -52,18 +52,18 @@ class TapperResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->label('Nama Tapper'),
-                TextInput::make('nik')->unique()
+                TextInput::make('nik')
                     ->required()
                     ->maxLength(255)
                     ->label('NIK'),
                 Select::make('departemen')
                     ->options([
-                        'Sub Divisi A' => 'Sub Divisi A',
-                        'Sub Divisi B' => 'Sub Divisi B',
-                        'Sub Divisi C' => 'Sub Divisi C',
-                        'Sub Divisi D' => 'Sub Divisi D',
-                        'Sub Divisi E' => 'Sub Divisi E',
-                        'Sub Divisi F' => 'Sub Divisi F',
+                        'Sub Div A' => 'Sub Div A',
+                        'Sub Div B' => 'Sub Div B',
+                        'Sub Div C' => 'Sub Div C',
+                        'Sub Div D' => 'Sub Div D',
+                        'Sub Div E' => 'Sub Div E',
+                        'Sub Div F' => 'Sub Div F',
                     ])
                     ->required()
                     ->label('Departemen'),
