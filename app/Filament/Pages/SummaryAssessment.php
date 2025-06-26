@@ -52,7 +52,7 @@ class SummaryAssessment extends Page
             $query->where('tappers.departemen', request('departemen'));
         }
 
-        return $query->paginate(1);
+        return $query->paginate(10);
     }
 
     public function getTreeAssessmentsProperty()

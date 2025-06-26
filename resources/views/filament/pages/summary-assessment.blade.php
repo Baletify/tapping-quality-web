@@ -26,32 +26,474 @@
                         <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">Task</th>
                         <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">Panel Sadap</th>
                         <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">Status Kulit</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">1.1</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">1.2</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">1.3</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">2.1</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">2.2</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">2.3</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">3.1</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">3.2</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">3.3</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">3.4</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">3.5</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">3.6</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">3.7</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">4.1</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">4.2</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">5.1</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">5.2</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">6.1</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">6.2</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">6.3</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">7.1</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">7.2</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">7.3</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">8</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">9</th>
-                        <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">10</th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                1.1
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Luka kayu kecil (BO) / Tidak Mengunakan Gagang Panjang (HO)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                1.2
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Luka kayu sedang (BO)/Tidak Menggunakan Pisau sodhok(HO)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                1.3
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Luka kayu besar (BO)/Sadapan Tidak Disodhok (HO)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                2.1
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Kedalaman sadap (normatif)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                2.2 
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Kedalaman sadap (kurang)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                2.3
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Kedalaman sadap (terlalu dalam)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                3.1
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Irisan melampaui batas depan
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                3.2
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Irisan melampaui batas belakang
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                3.3
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Tidak ada sodokan
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                3.4
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Tidak ada pethikan (V)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                3.5
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Tebal Tatal > 2mm (BO)/ >3mm(HO)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                3.6
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                    Bergelombang
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                3.7
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Tidak ada tanda bulan
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                4.1
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Sudut sadap > 30°(BO)/45° (HO)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                4.2
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Sudut sadap < 30°(BO)/45° (HO)
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                5.1
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Pengambilan scrap Diambil
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                5.2
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Pengambilan scrap tidak Diambil
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                6.1
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Peralatan tidak lengkap Talang
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                6.2
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Peralatan tidak lengkap mangkok
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                6.3
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Peralatan tidak lengkap Hanger
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                7.1
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Kebersihan alat Talang
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                7.2
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Kebersihan alat Mangkok
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                7.3
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Kebersihan alat Ember
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                8
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Pohon sehat tidak disadap
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                9
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Hasil tidak dipungut
+                                </span>
+                            </span>
+                        </th>
+                        <th class=" relative px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                            <span
+                                x-data="{ show: false }"
+                                @mouseenter="show = true"
+                                @mouseleave="show = false"
+                                class="cursor-pointer"
+                            >
+                                10
+                                <span
+                                    x-show="show"
+                                    x-transition
+                                    class="absolute top-1/2 bottom-full z-10 mb-2 w-56 -translate-x-1/2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-800 shadow"
+                                    style="display: none;"
+                                >
+                                Talang sadap mepet
+                                </span>
+                            </span>
+                        </th>
                         <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">Nilai</th>
                         <th class="px-4 py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">Kelas</th>
                     </tr>
