@@ -52,21 +52,24 @@ class TapperResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->label('Nama Tapper'),
-                TextInput::make('nik')->unique()
+                TextInput::make('nik')
                     ->required()
                     ->maxLength(255)
                     ->label('NIK'),
                 Select::make('departemen')
                     ->options([
-                        'Sub Divisi A' => 'Sub Divisi A',
-                        'Sub Divisi B' => 'Sub Divisi B',
-                        'Sub Divisi C' => 'Sub Divisi C',
+                        'Sub Div A' => 'Sub Div A',
+                        'Sub Div B' => 'Sub Div B',
+                        'Sub Div C' => 'Sub Div C',
+                        'Sub Div D' => 'Sub Div D',
+                        'Sub Div E' => 'Sub Div E',
+                        'Sub Div F' => 'Sub Div F',
                     ])
                     ->required()
                     ->label('Departemen'),
-                TextInput::make('jabatan')
-                    ->maxLength(255)
-                    ->label('Jabatan'),
+                // TextInput::make('jabatan')
+                //     ->maxLength(255)
+                //     ->label('Jabatan'),
                 Select::make('status')
                     ->options([
                         'Reguler' => 'Reguler',
@@ -102,8 +105,8 @@ class TapperResource extends Resource
                     ->label('Nama Tapper')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('jabatan')
-                    ->label('Jabatan'),
+                // TextColumn::make('jabatan')
+                //     ->label('Jabatan'),
                 TextColumn::make('departemen')
                     ->label('Departemen'),
                 TextColumn::make('status')

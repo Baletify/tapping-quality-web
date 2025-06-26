@@ -51,16 +51,36 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->required()->maxLength(255),
                 TextInput::make('nik')->required()->maxLength(255)->label('NIK'),
-                TextInput::make('departemen')->required()->maxLength(255),
+                Select::make('departemen')
+                    ->options([
+                        'QA/QM' => 'QA/QM',
+                        'Sub Div A' => 'Sub Div A',
+                        'Sub Div B' => 'Sub Div B',
+                        'Sub Div C' => 'Sub Div C',
+                        'Sub Div D' => 'Sub Div D',
+                        'Sub Div E' => 'Sub Div E',
+                        'Sub Div F' => 'Sub Div F',
+                    ])
+                    ->required()
+                    ->label('Departemen'),
                 TextInput::make('jabatan')->required()->maxLength(255),
                 TextInput::make('no_hp')
                     ->tel()
                     ->required()
-                    ->maxLength(15),
-                TextInput::make('status')->maxLength(255),
+                    ->maxLength(15)
+                    ->label('No. HP'),
+                Select::make('status')
+                    ->options([
+                        'Monthly' => 'Monthly',
+                        'Staff' => 'Staff',
+                        'Contract-BSKP' => 'Contract-BSKP',
+                    ])
+                    ->required()
+                    ->label('Status'),
                 Select::make('role')->options([
                     'Instruktur' => 'Instruktur',
                     'Admin' => 'Admin',
+                    'Mandor' => 'Mandor',
                 ])->required(),
                 Toggle::make('is_active')
                     ->label('Aktif')
@@ -92,6 +112,8 @@ class UserResource extends Resource
                     ->sortable(),
                 TextColumn::make('jabatan')
                     ->label('Jabatan'),
+                TextColumn::make('no_hp')
+                    ->label('No. HP'),
                 TextColumn::make('departemen')
                     ->label('Departemen')
                     ->searchable(),

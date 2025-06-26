@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use Twilio\Rest\Client;
 use Illuminate\Http\Request;
 use App\Models\AssessmentDetail;
 use Illuminate\Support\Facades\DB;
-use Twilio\Rest\Client;
+use Illuminate\Support\Facades\Log;
+use Filament\Notifications\Notification;
 
 class WhatsappController extends Controller
 {
@@ -25,7 +27,7 @@ class WhatsappController extends Controller
             "Inspeksi Oleh: {$creds->inspection_by}\n" .
             "Panel Sadap: {$creds->panel_sadap}\n\n" .
             "Total Nilai: {$request->total_score}\n" .
-            "Rata-rata Nilai: {$request->average_score}\n\n" .
+            "Kelas Sadap: {$request->kelas}\n\n" .
             "Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.\n\n" .
             "Salam,\n\n" .
             "Tim QA";
@@ -59,10 +61,19 @@ class WhatsappController extends Controller
             $response = curl_exec($curl);
 
             curl_close($curl);
-            flash()->success('Response: ' . $response);
+            Notification::make()
+                ->title('Pesan Terkirim')
+                ->body('Pesan berhasil dikirim ke ' . $creds->tapper_name)
+                ->success()
+                ->send();
             return redirect()->back()->with('success', 'Response: ' . $response);
         } catch (Exception $e) {
             flash()->error('Response: ' . $e->getMessage());
+            Notification::make()
+                ->title('Gagal Mengirim Pesan')
+                ->body('Gagal mengirim pesan: ' . $e->getMessage())
+                ->danger()
+                ->send();
             return  redirect()->back()->with('error', 'Gagal mengirim pesan: ' . $e->getMessage());
         }
     }

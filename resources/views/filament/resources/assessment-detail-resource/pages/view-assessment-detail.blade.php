@@ -36,7 +36,8 @@
                     </x-filament::button>
                 </div>
                 <input type="hidden" name="assessment_code" id="assessment_code" value="{{ $record->assessment_code }}">
-                {{-- <input type="hidden" name="total_score" id="total_score" value="{{ $totalScore }}"> --}}
+                <input type="hidden" name="total_score" id="total-score-input" value="">
+                <input type="hidden" name="kelas" id="kelas-input" value="">
             </form>
         </div>
     </div>
@@ -58,36 +59,46 @@
                     @foreach ($criteria as $item)
                         @php
                             $i++;
-                            $actualScore = $customData->first(function ($data) use ($item) {
-                                return $data->id === $item->id;
+                            $score = $customData->first(function ($data) use ($item) {
+                                return $data->criteria_id === $item->id;
                             });
-                            $totalScore += $actualScore ? $actualScore->score / 10 : 0;
+                            $totalScore += $score ? $score->sum_score / 10 : 0;
                         @endphp
                         <tr class="divide-x divide-gray-300 {{ $i % 2 == 0 ? 'bg-gray-100' : '' }}">
                             <td class="px-4 py-2 text-center">{{ $i }}</td>
                             <td class="px-4 py-2">{{ $item->name }} - {{ $item->description }}</td>
-                            <td class="px-4 py-2 text-center">{{ $actualScore ? number_format( $actualScore->score / 10, 1) : "-"}}</td>
+                            <td class="px-4 py-2 text-center">{{ $score ? number_format( $score->sum_score / 10, 1) : "-"}}</td>
                         </tr>
                     @endforeach
                     <tr class="font-semibold divide-x divide-gray-200">
                         <td class="px-4 py-2 text-center" colspan="2">Total Average</td>
-                        <td class="px-4 py-2 text-center">{{ number_format($totalScore, 1) }}</td>
+                        <td id="total-score-cell" class="px-4 py-2 text-center">{{ number_format($totalScore, 1) }}</td>
                     </tr>
                     <tr class="font-semibold divide-x divide-gray-200">
                         <td class="px-4 py-2 text-center" colspan="2">Kelas</td>
                         @if ($totalScore > 0 && $totalScore <= 10.9)
-                            <td class="px-4 py-2 text-center">1</td>
+                            <td id="kelas-cell" class="px-4 py-2 text-center">1</td>
                         @elseif ($totalScore > 10 && $totalScore <= 20.9)
-                            <td class="px-4 py-2 text-center">2</td>
+                            <td id="kelas-cell" class="px-4 py-2 text-center">2</td>
                         @elseif ($totalScore > 20 && $totalScore <= 26.9)
-                            <td class="px-4 py-2 text-center">3</td>
+                            <td id="kelas-cell" class="px-4 py-2 text-center">3</td>
                         @elseif ($totalScore > 26 && $totalScore <= 32.9)
-                            <td class="px-4 py-2 text-center">4</td>
+                            <td id="kelas-cell" class="px-4 py-2 text-center">4</td>
                         @else
-                            <td class="px-4 py-2 text-center">No Class</td>
+                            <td id="kelas-cell" class="px-4 py-2 text-center">No Class</td>
                         @endif
                     </tr>
                 </tbody>
             </table>
         </div>
 </x-filament::page>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var total = document.getElementById('total-score-cell').innerText;
+        var kelas = document.getElementById('kelas-cell').innerText;
+        document.getElementById('total-score-input').value = total;
+        document.getElementById('kelas-input').value = kelas;
+    });
+</script>
