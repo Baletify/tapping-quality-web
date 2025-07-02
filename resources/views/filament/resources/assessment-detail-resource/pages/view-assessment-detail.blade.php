@@ -1,8 +1,8 @@
 <x-filament::page>
     <div class="">
-        <p class="font-semibold text-sm">Detail Tapper</p>
-        <div class="flex justify-between">
+        <div class="flex gap-x-6">
             <div class="">
+                <p class="font-semibold text-sm">Detail Tapper</p>
                 <table>
                     <tr>
                         <td class="text-sm text-gray-500">NIK</td>
@@ -25,6 +25,57 @@
                         <td class="text-sm text-gray-500">{{ $tapperCreds->inspection_by }}</td>
                     </tr>
                 </table>
+            </div>
+             <div class="">
+                <p class="font-semibold text-sm">Detail Inspeksi</p>
+                <table>
+                    <tr>
+                        <td class="text-sm text-gray-500">Tanggal Inspeksi</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ \Carbon\Carbon::parse($inspectionDetails->tanggal_inspeksi)->format('d M Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm text-gray-500">Task</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ $inspectionDetails->task }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm text-gray-500">Panel Sadap</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ $inspectionDetails->panel_sadap }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm text-gray-500">Status Kulit</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ $inspectionDetails->jenis_kulit_pohon }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="">
+                <p class="font-semibold text-sm text-white">Detail Inspeksi</p>
+                <table>
+                    <tr>
+                        <td class="text-sm text-gray-500">Blok</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ $inspectionDetails->blok }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm text-gray-500">No Hancak</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ $inspectionDetails->no_hancak }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm text-gray-500">Tahun Tanam</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ $inspectionDetails->tahun_tanam }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm text-gray-500">Clone</td>
+                        <td class="text-sm text-gray-500 px-3">:</td>
+                        <td class="text-sm text-gray-500">{{ $inspectionDetails->clone }}</td>
+                    </tr>
+                </table>
+                
             </div>
             {{-- <form action="{{ route('whatsapp.send-message') }}" method="POST">
                 @method('POST')

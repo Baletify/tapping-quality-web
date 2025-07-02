@@ -22,11 +22,14 @@ class ViewAssessmentDetail extends ViewRecord
 
     public $criteria;
 
+    public $inspectionDetails;
+
     public function mount($record): void
     {
         parent::mount($record);
 
         $this->criteria = DB::table('criteria')
+            ->whereNotIn('id', [4, 8, 19, 22, 25, 31, 34, 35, 38, 40, 42])
             ->select('criteria.*')
             ->get();
 
@@ -45,7 +48,13 @@ class ViewAssessmentDetail extends ViewRecord
             ->join('tappers', 'assessment_details.nik_penyadap', '=', 'tappers.nik')
             ->select('tappers.name as tapper_name', 'tappers.nik as tapper_nik', 'tappers.departemen as departemen', 'assessment_details.inspection_by as inspection_by', 'assessment_details.tanggal_inspeksi as tanggal_inspeksi', 'assessment_details.panel_sadap')
             ->first();
+
+        $this->inspectionDetails = DB::table('assessment_details')->where('assessment_code', $this->record->assessment_code)
+            ->select('assessment_details.*')
+            ->first();
     }
+
+
 
     // public static function table(Table $table): Table
     // {

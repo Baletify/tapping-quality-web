@@ -69,6 +69,14 @@ class AssessmentDetailResource extends Resource
                     ->searchable(),
                 TextColumn::make('tapper.departemen')
                     ->label('Departemen'),
+                TextColumn::make('blok')
+                    ->label('Blok'),
+                TextColumn::make('no_hancak')
+                    ->label('No Hancak'),
+                TextColumn::make('tahun_tanam')
+                    ->label('Tahun Tanam'),
+                TextColumn::make('clone')
+                    ->label('Clone'),
                 TextColumn::make('task')
                     ->label('Task'),
                 TextColumn::make('panel_sadap')
@@ -96,6 +104,26 @@ class AssessmentDetailResource extends Resource
                             ->unique()
                     )
                     ->label('Kemandoran'),
+                SelectFilter::make('panel_sadap')
+                    ->options(
+                        AssessmentDetail::pluck('panel_sadap', 'panel_sadap')
+                    )
+                    ->label('Panel Sadap'),
+                SelectFilter::make('blok')
+                    ->options(
+                        AssessmentDetail::pluck('blok', 'blok')
+                    )
+                    ->label('Blok'),
+                SelectFilter::make('task')
+                    ->options(
+                        [
+                            'A' => 'A',
+                            'B' => 'B',
+                            'C' => 'C',
+                            'D' => 'D',
+                        ]
+                    )
+                    ->label('Task'),
                 DateRangeFilter::make('tanggal_inspeksi')
                     ->label('Tanggal Inspeksi')
                     ->ranges([
