@@ -28,6 +28,7 @@ class ViewAssessmentDetail extends ViewRecord
         parent::mount($record);
 
         $this->criteria = DB::table('criteria')
+            ->whereNotIn('id', [4, 8, 19, 22, 25, 31, 34, 35, 38, 40, 42])
             ->select('criteria.*')
             ->get();
 

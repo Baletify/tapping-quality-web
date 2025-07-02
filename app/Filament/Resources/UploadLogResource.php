@@ -2,17 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UploadLogResource\Pages;
-use App\Filament\Resources\UploadLogResource\RelationManagers;
-use App\Models\UploadLog;
+use Dom\Text;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Form;
+use App\Models\UploadLog;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\UploadLogResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\UploadLogResource\RelationManagers;
 
 class UploadLogResource extends Resource
 {
@@ -22,6 +24,11 @@ class UploadLogResource extends Resource
     protected static ?string $navigationGroup = 'Data Assessment';
 
     public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit(Model $model): bool
     {
         return false;
     }
@@ -38,11 +45,14 @@ class UploadLogResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('assessment_code')
-                    ->label(('Kode Assessment')),
-                TextColumn::make('upload_at')
+                TextColumn::make('assessment_details.inspection_by')
+                    ->label('Uploaded By'),
+                TextColumn::make('assessment_details.tanggal_inspeksi')
                     ->date('d M Y')
-                    ->label('Waktu Upload'),
+                    ->label('Tanggal Inspeksi'),
+                TextColumn::make('assessment_details.created_at')
+                    ->label('Upload At')
+                    ->date('d M Y'),
             ])
             ->filters([
                 //
