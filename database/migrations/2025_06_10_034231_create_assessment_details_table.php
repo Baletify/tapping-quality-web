@@ -26,9 +26,6 @@ return new class extends Migration
             $table->string('jenis_sadap')->nullable();
             $table->string('inspection_by')->nullable();
             $table->dateTime('tanggal_inspeksi')->nullable();
-            $table->double('nilai')->nullable();
-            $table->string('kelas')->nullable();
-            $table->text('keterangan')->nullable();
             $table->timestamps();
             $table->foreign('nik_penyadap')->references('nik')->on('tappers')->onDelete('cascade');
         });

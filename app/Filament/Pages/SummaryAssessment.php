@@ -39,11 +39,12 @@ class SummaryAssessment extends Page
     public function getAssessmentDetailsProperty()
     {
         $query = DB::table('assessment_details')
-            ->select('assessment_details.*', 'tappers.name as tapper_name', 'tappers.nik as tapper_nik', 'users.name as user_name', 'tappers.departemen as departemen', 'tappers.status as status')
+            ->select('assessment_details.*', 'tappers.name as tapper_name', 'tappers.nik as tapper_nik', 'tappers.departemen as departemen', 'tappers.status as status',)
             ->join('tappers', 'assessment_details.nik_penyadap', '=', 'tappers.nik')
-            ->join('users', 'tappers.user_id', '=', 'users.id')
+            // ->join('users', 'tappers.user_id', '=', 'users.id')
             ->orderBy('assessment_details.tanggal_inspeksi', 'desc');
 
+        // dd($query->get());
         if (request('search')) {
             $query->where('tappers.name', 'like', '%' . request('search') . '%');
         }

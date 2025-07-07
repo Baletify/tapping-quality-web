@@ -516,7 +516,7 @@
                     <tr class="divide-x divide-gray-300">
                         <td class="text-gray-500 px-2 text-center">{{ $i }}</td>
                         <td class="text-gray-500 px-2">{{ \Carbon\Carbon::parse($item->tanggal_inspeksi)->format('d M Y') }}</td>
-                        <td class="text-gray-500 px-2">{{ $item->departemen }}</td>
+                        <td class="text-gray-500 px-2 text-center">{{ $item->departemen }}</td>
                         <td class="text-gray-500 px-2 text-center">{{ $item->tapper_nik }}</td>
                         <td class="text-gray-500 px-2">{{ $item->tapper_name }}</td>
                         <td class="text-gray-500 px-2 text-center">{{ $item->status }}</td>
