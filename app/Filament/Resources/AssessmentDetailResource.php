@@ -90,12 +90,12 @@ class AssessmentDetailResource extends Resource
                             $q->where('departemen', $value);
                         });
                     }),
-                SelectFilter::make('kemandoran')
-                    ->options(
-                        AssessmentDetail::pluck('kemandoran', 'kemandoran')
-                            ->unique()
-                    )
-                    ->label('Kemandoran'),
+                // SelectFilter::make('kemandoran')
+                //     ->options(
+                //         AssessmentDetail::pluck('kemandoran', 'kemandoran')
+                //             ->unique()
+                //     )
+                //     ->label('Kemandoran'),
                 DateRangeFilter::make('tanggal_inspeksi')
                     ->label('Tanggal Inspeksi')
                     ->ranges([
