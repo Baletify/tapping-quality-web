@@ -18,12 +18,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AssessmentDetailResource\Pages;
 use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 use App\Filament\Resources\AssessmentDetailResource\RelationManagers;
-
-
+use App\Models\Assessment;
 
 class AssessmentDetailResource extends Resource
 {
-    protected static ?string $model = AssessmentDetail::class;
+    protected static ?string $model = Assessment::class;
     protected static ?string $navigationGroup = 'Data Assessment';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -50,24 +49,24 @@ class AssessmentDetailResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('tanggal_inspeksi')
+                TextColumn::make('tgl_inspeksi')
                     ->date('d M Y')
                     ->sortable()
                     ->label('Tanggal Inspeksi'),
-                TextColumn::make('inspection_by')
-                    ->label('Inspeksi Oleh'),
+                TextColumn::make('nama_inspektur')
+                    ->label('Nama Inspektur'),
                 TextColumn::make('nik_penyadap')
                     ->label('NIK Tapper'),
-                TextColumn::make('tapper.name')
+                TextColumn::make('nama_penyadap')
                     ->label('Nama Tapper')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('tapper.status')
+                TextColumn::make('status')
                     ->label('Status'),
                 TextColumn::make('kemandoran')
                     ->label('Kemandoran')
                     ->searchable(),
-                TextColumn::make('tapper.departemen')
+                TextColumn::make('dept')
                     ->label('Departemen'),
                 TextColumn::make('blok')
                     ->label('Blok'),
@@ -98,20 +97,20 @@ class AssessmentDetailResource extends Resource
                             $q->where('departemen', $value);
                         });
                     }),
-                // SelectFilter::make('kemandoran')
-                //     ->options(
-                //         AssessmentDetail::pluck('kemandoran', 'kemandoran')
-                //             ->unique()
-                //     )
-                //     ->label('Kemandoran'),
+                SelectFilter::make('kemandoran')
+                    ->options(
+                        Assessment::pluck('kemandoran', 'kemandoran')
+                            ->unique()
+                    )
+                    ->label('Kemandoran'),
                 SelectFilter::make('panel_sadap')
                     ->options(
-                        AssessmentDetail::pluck('panel_sadap', 'panel_sadap')
+                        Assessment::pluck('panel_sadap', 'panel_sadap')
                     )
                     ->label('Panel Sadap'),
                 SelectFilter::make('blok')
                     ->options(
-                        AssessmentDetail::pluck('blok', 'blok')
+                        Assessment::pluck('blok', 'blok')
                     )
                     ->label('Blok'),
                 SelectFilter::make('task')
@@ -124,7 +123,7 @@ class AssessmentDetailResource extends Resource
                         ]
                     )
                     ->label('Task'),
-                DateRangeFilter::make('tanggal_inspeksi')
+                DateRangeFilter::make('tgl_inspeksi')
                     ->label('Tanggal Inspeksi')
                     ->ranges([
                         'Today' => [now()->startOfDay(), now()->endOfDay()],
@@ -137,7 +136,7 @@ class AssessmentDetailResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 // Tables\Actions\EditAction::make(),
             ])
-            ->defaultSort('tanggal_inspeksi', 'desc');
+            ->defaultSort('tgl_inspeksi', 'desc');
         // ->bulkActions([
         //         Tables\Actions\BulkActionGroup::make([
         //             Tables\Actions\DeleteBulkAction::make(),

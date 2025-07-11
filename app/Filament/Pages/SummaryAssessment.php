@@ -38,36 +38,39 @@ class SummaryAssessment extends Page
 
     public function getAssessmentDetailsProperty()
     {
-        $query = DB::table('assessment_details')
-            ->select('assessment_details.*', 'tappers.name as tapper_name', 'tappers.nik as tapper_nik', 'tappers.departemen as departemen', 'tappers.status as status',)
-            ->join('tappers', 'assessment_details.nik_penyadap', '=', 'tappers.nik')
+        $now = now();
+        $query = DB::table('assessments')
             // ->join('users', 'tappers.user_id', '=', 'users.id')
-            ->orderBy('assessment_details.tanggal_inspeksi', 'desc');
+            ->orderBy('assessments.tgl_inspeksi', 'desc');
 
         // dd($query->get());
         if (request('search')) {
-            $query->where('tappers.name', 'like', '%' . request('search') . '%');
+            $query->where('nama_penyadap', 'like', '%' . request('search') . '%');
         }
 
         if (request('departemen')) {
-            $query->where('tappers.departemen', request('departemen'));
+            $query->where('dept', request('departemen'));
         }
 
-        return $query->paginate(10);
+        if (request('month')) {
+            $query->whereMonth('tgl_inspeksi', request('month'));
+        }
+
+        return $query->paginate(10)->onEachSide(0);
     }
 
-    public function getTreeAssessmentsProperty()
-    {
-        return DB::table('tree_assessments')
-            ->join('assessment_details', 'tree_assessments.assessment_code', '=', 'assessment_details.assessment_code')
-            ->join('criteria', 'tree_assessments.criteria_id', '=', 'criteria.id')
-            ->select('tree_assessments.criteria_id', 'tree_assessments.assessment_code', DB::raw('SUM(criteria.score) as sum_score'))
-            ->groupBy('tree_assessments.criteria_id', 'tree_assessments.assessment_code')
-            ->get();
-    }
+    // public function getTreeAssessmentsProperty()
+    // {
+    //     return DB::table('tree_assessments')
+    //         ->join('assessment_details', 'tree_assessments.assessment_code', '=', 'assessment_details.assessment_code')
+    //         ->join('criteria', 'tree_assessments.criteria_id', '=', 'criteria.id')
+    //         ->select('tree_assessments.criteria_id', 'tree_assessments.assessment_code', DB::raw('SUM(criteria.score) as sum_score'))
+    //         ->groupBy('tree_assessments.criteria_id', 'tree_assessments.assessment_code')
+    //         ->get();
+    // }
 
     public function getDepartemenOptionsProperty()
     {
-        return DB::table('tappers')->distinct()->pluck('departemen');
+        return DB::table('assessments')->distinct()->pluck('dept');
     }
 }
