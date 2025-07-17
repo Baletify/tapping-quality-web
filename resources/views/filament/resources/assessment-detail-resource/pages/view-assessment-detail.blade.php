@@ -55,6 +55,7 @@
                     @php
                         $i = 0;
                         $totalScore = 0;
+                        // dd($criteria);
                     @endphp
                     @foreach ($criteria as $item)
                         @php

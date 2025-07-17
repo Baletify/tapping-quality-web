@@ -31,6 +31,7 @@ class ViewAssessmentDetail extends ViewRecord
             ->whereNotIn('id', [4, 8, 19, 22, 25, 31, 34, 35, 38, 40, 42])
             ->select('criteria.*')
             ->get();
+        // dd($this->criteria);
 
         $this->customData = TreeAssessment::where('tree_assessments.assessment_code', $this->record->assessment_code)
             ->select('tree_assessments.criteria_id', DB::raw('SUM(criteria.score) as sum_score'))
