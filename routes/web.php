@@ -11,3 +11,6 @@ Route::get('/', function () {
 // Route::post('/api/assessment/upload', [AssessmentController::class, 'store'])->name('api.assessment-details.create');
 Route::post('/send-message', [WhatsappController::class, 'sendMessage'])
     ->name('whatsapp.send-message');
+// Route::get('/admin/assessment-details/create', function () {
+//     return 'Test route works';
+// });

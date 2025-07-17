@@ -11,11 +11,12 @@ class AssessmentDetail extends Model
     /** @use HasFactory<\Database\Factories\AssessmentDetailFactory> */
     use HasFactory;
 
-    protected $primaryKey = 'assessment_code';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    // protected $primaryKey = 'assessment_code';
+    // public $incrementing = false;
+    // protected $keyType = 'string';
 
     protected $fillable = [
+        'id',
         'assessment_code',
         'nik_penyadap',
         'blok',
@@ -44,8 +45,8 @@ class AssessmentDetail extends Model
 
 
 
-    public function getRouteKey()
-    {
-        return (string) $this->getAttribute($this->getRouteKeyName());
-    }
+    // public function getRouteKey()
+    // {
+    //     return (string) $this->getAttribute($this->getRouteKeyName());
+    // }
 }

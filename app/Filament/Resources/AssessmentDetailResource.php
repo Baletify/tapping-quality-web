@@ -18,8 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AssessmentDetailResource\Pages;
 use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 use App\Filament\Resources\AssessmentDetailResource\RelationManagers;
-
-
+use Filament\Forms\Components\TextInput;
 
 class AssessmentDetailResource extends Resource
 {
@@ -28,21 +27,15 @@ class AssessmentDetailResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function canCreate(): bool
-    {
-        return false; // Allow all users to create assessment details
-    }
-
-    public static function canEdit(Model $model): bool
-    {
-        return false;
-    }
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('assessment_code')
+                    ->label('Kode Assessment')
+                    ->required()
+                    ->maxLength(255)
+                    ->unique(ignoreRecord: true),
             ]);
     }
 
@@ -155,15 +148,10 @@ class AssessmentDetailResource extends Resource
     public static function getPages(): array
     {
         return [
-            'view' => Pages\ViewAssessmentDetail::route('/{record}'),
             'index' => Pages\ListAssessmentDetails::route('/'),
             'create' => Pages\CreateAssessmentDetail::route('/create'),
-            // 'edit' => Pages\EditAssessmentDetail::route('/{record}/edit'),
+            'edit' => Pages\EditAssessmentDetail::route('/{record}/edit'),
+            'view' => Pages\ViewAssessmentDetail::route('/{record}'),
         ];
-    }
-
-    public function getRouteKeyName()
-    {
-        return 'assessment_code';
     }
 }

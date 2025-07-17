@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('assessment_details', function (Blueprint $table) {
-            $table->string('assessment_code')->primary()->unique();
+            $table->id();
+            $table->string('assessment_code')->unique();
             $table->string('nik_penyadap')->nullable();
             $table->string('blok')->nullable();
             $table->string('task')->nullable();
