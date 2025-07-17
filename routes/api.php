@@ -12,7 +12,6 @@ Route::get('/', function () {
 
 Route::post('/assessment-upload', [AssessmentController::class, 'store'])->name('api.assessment-details.create');
 Route::post('/tree-assessment-upload', [AssessmentController::class, 'storeTree'])->name('api.assessment-details.store-tree');
-Route::post('/fonnte/webhook', [WhatsappController::class, 'webhook']);
 Route::post('/auth', [AuthController::class, 'authenticate']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return response()->json([
@@ -20,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         'user' => $request->user(),
     ]);
 });
+Route::match(['get', 'post'], '/fonnte/webhook', [WhatsappController::class, 'webhook']);
+Route::match(['get', 'post'], '/fonnte/delivery-status', [WhatsappController::class, 'deliveryStatus']);
